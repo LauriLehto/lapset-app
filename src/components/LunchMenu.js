@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,10 +29,12 @@ function MenuItems({description}) {
   const classes = useStyles();
 
   let items = description.split('<br>')
-  console.log(items)
   return (
     <div className={classes.items}>
-      {items.map(item => <Paper elevation={2}>{item}</Paper>)}
+      {items.map(item =>{
+        console.log(item)
+        return <Paper key={items.indexOf(item)} elevation={2}>{item}</Paper>
+      })}
     </div>
   )
 }
@@ -50,9 +51,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
+        <Box p={3}>{children}</Box>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
@@ -8,8 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import LunchMenu from './components/LunchMenu'
-import NavBar from './components/NavBar'
+import Menu from './components/Menu';
+import NavBar from './components/NavBar';
+import Daycare from './components/Daycare';
+import Calendar from './components/Calendar';
+import Login from './components/Login';
+import MainPage  from './components/MainPage';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -52,20 +57,32 @@ export default function App() {
 
 
   return (
+    <Router>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <RestaurantIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Ruokalista
-        </Typography>
-        <LunchMenu menu={menu} />
+          <Switch>
+            <Route path='/kirjaudu'>
+              <Login />
+            </Route>
+            <Route exact path='/'>
+              <MainPage />
+            </Route>
+            <Route path='/kalenteri'>
+              <Calendar />
+            </Route>
+            <Route path='/ruoka'>
+              <Menu menu={menu} />
+            </Route>
+            <Route path='/vuorot'>
+              <Daycare />
+            </Route>
+          </Switch>
       </div>
       <div className={classes.nav}>
         <NavBar />
       </div>
     </Container>
+    </Router>
   );
 }
