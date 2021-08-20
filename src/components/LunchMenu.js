@@ -105,8 +105,6 @@ export default function SimpleTabs(props) {
       { menu && menu.map( m => {
         const dateString = m.title[0].split(' ')[1].split('.').reverse().join('-')
         const date = new Date(dateString)
-        const description = m.description[0].split('<br>')
-       // const description = m.description.split('<br/>')
         return(
           <TabPanel 
             key={date.getDay()} 
