@@ -4,12 +4,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import Menu from './components/Menu';
 import NavBar from './components/NavBar';
-import Daycare from './components/Daycare';
-import Calendar from './components/Calendar';
-import Login from './components/Login';
-import MainPage  from './components/MainPage';
+import Menu from './views/Menu';
+import Daycare from './views/Daycare';
+import Calendar from './views/Calendar';
+import Login from './views/Login';
+import MainPage  from './views/MainPage';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

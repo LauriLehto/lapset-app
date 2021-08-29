@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 
@@ -33,7 +35,12 @@ function MenuItems({description}) {
     <div className={classes.items}>
       {items.map(item =>{
         console.log(item)
-        return <Paper key={items.indexOf(item)} elevation={2}>{item}</Paper>
+        return (
+          <React.Fragment key={items.indexOf(item)}>
+            <ListItem key={items.indexOf(item)} elevation={2}>
+              {item}
+            </ListItem>
+          </React.Fragment>)
       })}
     </div>
   )
@@ -102,6 +109,7 @@ export default function SimpleTabs(props) {
         })}
       </Tabs>
       {/* TabPanels */}
+      <Paper elevation={5} style={{paddingBottom:"10px"}}>
       { menu && menu.map( m => {
         const dateString = m.title[0].split(' ')[1].split('.').reverse().join('-')
         const date = new Date(dateString)
@@ -111,10 +119,13 @@ export default function SimpleTabs(props) {
             value={value} 
             index={date.getDay()}
             {...other}>
+              <List>
             <MenuItems description={m.description[0]} />
+            </List>
           </TabPanel>
         )
       })}
+      </Paper>
     </div>
   );
 }

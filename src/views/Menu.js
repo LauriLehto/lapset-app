@@ -4,7 +4,7 @@ import RestaurantIcon from '@material-ui/icons/Restaurant';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-import LunchMenu from './LunchMenu'
+import LunchMenu from '../components/LunchMenu'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
